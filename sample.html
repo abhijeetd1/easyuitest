@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Full Layout - jQuery EasyUI Demo</title>
+    <link rel="stylesheet" type="text/css" href="themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="demo.css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.easyui.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script type="text/javascript" src="myapp.js"></script>
+    <script type="text/javascript" src="myapp-controller.js"></script>
+    <script type="text/javascript" src="myapp-service.js"></script>
+</head>
+
+<body class="easyui-layout" ng-app="myapp">
+    <div data-options="region:'north',border:false" style="height:60px;background:#408800;padding:10px">north region</div>
+    <div data-options="region:'west',split:true,title:'West'" style="width:150px;padding:10px;">west content</div>
+    <div data-options="region:'east',split:true,collapsed:true,title:'East'" style="width:100px;padding:10px;">east region</div>
+    <div data-options="region:'south',split:true" style="height:50px;background:#408800;padding:10px;">south region</div>
+    <div data-options="region:'center',title:'Center'">
+        <div class="easyui-layout" data-options="fit:true" ng-controller="datagridController">
+            <div data-options="region:'north',split:true" style="height:150px">
+                <div style="margin:10px 0;">
+                    <a href="#" class="easyui-linkbutton" ng-click="uploaddata()">Upload</a> 
+                    
+                </div>
+                <div id="p" class="easyui-progressbar" style="width:400px;"></div>
+
+                <a href="#" class="easyui-linkbutton c1" style="width:120px;margin:10px" ng-click="processData()">Run</a>
+
+            </div>
+            <div data-options="region:'center'">
+                <div style="margin:20px 100px;">
+                    <div id="tabledata" style="display:none">
+                        <table id="dg" class="easyui-datagrid" title="Basic DataGrid" style="width:670px;height:250px" data-options="singleSelect:true,collapsible:true,idField:status">
+                            <thead>
+                                <tr>
+                                    <th data-options="field:'itemid',width:80">Item ID</th>
+                                    <th data-options="field:'productid',width:100">Product</th>
+                                    <th data-options="field:'listprice',width:80,align:'right'">List Price</th>
+                                    <th data-options="field:'unitcost',width:80,align:'right'">Unit Cost</th>
+                                    <th data-options="field:'attr1',width:250">Attribute</th>
+                                    <th data-options="field:'status',width:60,align:'center'" id="status">Status</th>
+                                </tr>
+                            </thead>
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function start() {
+        var value = $('#p').progressbar('getValue');
+        if (value < 100) {
+            value += Math.floor(Math.random() * 10);
+            $('#p').progressbar('setValue', value);
+            setTimeout(arguments.callee, 200);
+        }
+    };
+
+</script>
+
+</html>

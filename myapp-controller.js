@@ -13,7 +13,7 @@ MyApp.controller('datagridController', function ( $scope, $http, dataGridService
         dataGridService.processData();
     }
         
-    
+    console.log ("This is just a test")
     
  
 })
